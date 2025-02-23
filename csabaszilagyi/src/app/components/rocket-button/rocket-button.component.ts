@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { SharedModule } from '../../../shared/modules/shared/shared.module';
+import { Language } from '../../enums/language.enum';
 
 @Component({
   selector: 'rocket-button',
@@ -11,5 +12,8 @@ import { SharedModule } from '../../../shared/modules/shared/shared.module';
   styleUrl: './rocket-button.component.scss'
 })
 export class RocketButtonComponent {
+  
   title = input.required<string>();
+
+  onClick = output();
 }

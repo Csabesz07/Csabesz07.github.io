@@ -5,7 +5,7 @@
 <h1>Válassz nyelvet</h1>
 
 <div class="buttons">
-    <rocket-button [title]="'Magyar'"></rocket-button>
+    <rocket-button [title]="'Magyar'" (onClick)="navigateToGalaxy(LanguageEnum.hu)"></rocket-button>
     
-    <rocket-button [title]="'Angol'"></rocket-button>
+    <rocket-button [title]="'Angol'" (onClick)="navigateToGalaxy(LanguageEnum.en)"></rocket-button>
 </div>

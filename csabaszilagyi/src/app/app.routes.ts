@@ -5,6 +5,10 @@ export const routes: Routes = [
         path: 'language',
         loadComponent: () => import('../app/components/landing-page/landing-page.component').then(c => c.LandingPageComponent),
     },
+    {
+        path: 'galaxy',
+        loadComponent: () => import('../app/components/galaxy/galaxy.component').then(c => c.GalaxyComponent),
+    },
     { 
         path: '', 
         redirectTo: '/language', 
