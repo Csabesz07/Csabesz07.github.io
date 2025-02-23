@@ -1,0 +1,13 @@
+@import '../../../styles.scss';
+
+:host {
+    h1 {
+        text-align: center;
+    }
+
+    hr {
+        width: 50%;
+        border: 2px solid $white-color;
+        border-radius: 5px;
+    }
+}

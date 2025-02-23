@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+$white-color: white;
+$black-color: black;
+
+@font-face {
+    font-family: 'HemiHead';
+    src: url('assets/fonts/hemi-head-426/HEMIHEAD.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SpaceAge';
+    src: url('assets/fonts/space-age/space\ age.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 24px;
+    background-color: $black-color;
+}
+
+h1 {
+    font-family: 'HemiHead';
+    color: $white-color;
+    margin: 0;
+}
