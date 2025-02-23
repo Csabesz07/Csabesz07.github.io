@@ -5,7 +5,7 @@ on:
     paths:
       - '**'
     branches:
-      - master
+      - main
 jobs:
   frontend_update:
     name: Update app version
@@ -29,5 +29,5 @@ jobs:
           author_email: github-actions[bot]@users.noreply.github.com
           author_name: github-actions[bot]
           message: '[skip-ci] Updating app version'
-          branch: master
+          branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
