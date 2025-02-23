@@ -2,6 +2,8 @@ name: Update app version
 run-name: Triggered by ${{ github.actor }}
 on:
   push:
+    paths:
+      - 'csabaszilagyi/**'
     branches:
       - main
 jobs:
@@ -16,7 +18,7 @@ jobs:
             fetch-depth: 0
 
        - name: Add changed files
-         working-directory: ./
+         working-directory: ./csabaszilagyi
          run: |
           echo "Updating the app version!"
           npm version patch
