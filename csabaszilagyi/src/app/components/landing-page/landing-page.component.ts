@@ -23,6 +23,10 @@ export class LandingPageComponent {
   ) {}
 
   navigateToGalaxy(lang: Language): void {
-    this.router.navigate(['/galaxy'], { queryParams: {lang: lang} })
+    this.activatedRoute.paramMap.subscribe(
+      params => {
+        this.router.navigate(['/' + (params.get('previous') ?? 'galaxy')], { queryParams: {lang: lang} });
+      }
+    );
   }
 }

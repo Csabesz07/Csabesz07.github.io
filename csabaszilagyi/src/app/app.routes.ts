@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { languageControlGuard } from './guards/language-control.guard';
 
 export const routes: Routes = [
     {
@@ -8,6 +9,7 @@ export const routes: Routes = [
     {
         path: 'galaxy',
         loadComponent: () => import('../app/components/galaxy/galaxy.component').then(c => c.GalaxyComponent),
+        canActivate: [ languageControlGuard ]
     },
     { 
         path: '', 
