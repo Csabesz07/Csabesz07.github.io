@@ -1,0 +1,33 @@
+name: Update app version
+run-name: Triggered by ${{ github.actor }}
+on:
+  push:
+    paths:
+      - '**'
+    branches:
+      - master
+jobs:
+  frontend_update:
+    name: Update app version
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout Code
+         uses: actions/checkout@v2
+         with:
+            persist-credentials: false
+            fetch-depth: 0
+
+       - name: Add changed files
+         working-directory: ./
+         run: |
+          echo "Updating the app version!"
+          npm version patch
+
+       - name: Push changed files
+         uses: actions-js/push@master
+         with:
+          author_email: github-actions[bot]@users.noreply.github.com
+          author_name: github-actions[bot]
+          message: '[skip-ci] Updating app version'
+          branch: master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
