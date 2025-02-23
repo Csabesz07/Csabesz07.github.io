@@ -2,8 +2,6 @@ name: Update app version
 run-name: Triggered by ${{ github.actor }}
 on:
   push:
-    paths:
-      - '**'
     branches:
       - main
 jobs:
