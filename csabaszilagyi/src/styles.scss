@@ -1,5 +1,5 @@
-$white-color: white;
-$black-color: black;
+$white-color: #F8F8FF;
+$black-color: #1A1A1A;
 
 @font-face {
     font-family: 'HemiHead';
@@ -25,6 +25,12 @@ body {
 }
 
 h1 {
+    font-family: 'HemiHead';
+    color: $white-color;
+    margin: 0;
+}
+
+h2 {
     font-family: 'HemiHead';
     color: $white-color;
     margin: 0;

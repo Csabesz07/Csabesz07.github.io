@@ -1,0 +1,17 @@
+@import '../../../styles.scss';
+
+:host {
+    button {
+        width: 150px;
+        border: 2px solid $white-color;
+        background-color: transparent;
+        padding: 12px;
+        border-radius: 2rem;
+        transition-duration: 250ms;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+    }
+}
