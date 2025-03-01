@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnimationBuilder } from '@angular/animations';
 import { meteoriteFall } from '../../animations/background-element.animation';
 import { MeteoriteAnimationParams } from '../../types/meteorite-animation-params';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'landing-page',
@@ -35,7 +36,8 @@ export class LandingPageComponent implements OnDestroy {
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
     private _builder: AnimationBuilder,
-    private _element: ElementRef
+    private _element: ElementRef,
+    private _dataService: DataService,
   ) {}  
 
   ngOnDestroy(): void {
@@ -55,7 +57,7 @@ export class LandingPageComponent implements OnDestroy {
 
   private _createMeteorite(): HTMLImageElement {
     let meteorite = document.createElement('img');
-    meteorite.style.zIndex = '-1';
+    meteorite.style.zIndex = '-2';
     meteorite.style.position = 'absolute';
     meteorite.style.width = Math.max((Math.random() * 150), 25) + 'px';
     meteorite.style.transformOrigin = 'center center';    
@@ -82,11 +84,7 @@ export class LandingPageComponent implements OnDestroy {
 
   private _createMeteoriteAnimationParameters(): MeteoriteAnimationParams {
     const random = Math.random();
-    const randomBoolean = random > 0.5;
-    function getRandomNumberFromInterval(min: number, max: number) {
-      max = max + 1;
-      return Math.floor(Math.random() * (max - min) + min);
-    }
+    const randomBoolean = random > 0.5;    
 
     return {
       fromTop: randomBoolean ? -50 : window.innerHeight,
@@ -94,12 +92,12 @@ export class LandingPageComponent implements OnDestroy {
       toTop: randomBoolean ? window.innerHeight : 0,
       toLeft: randomBoolean ? window.innerWidth : 0,
       rotation: random * 450,
-      timingMs: Math.min(random * 25000, 12000),
+      timingMs: Math.min(random * 20000, 12000),
       operator: '-',
-      fromTopOffset: randomBoolean ? getRandomNumberFromInterval(0, window.innerHeight) : -(getRandomNumberFromInterval(0, window.innerHeight)),
-      fromLeftOffset: randomBoolean ? getRandomNumberFromInterval(0, window.innerWidth) : -(getRandomNumberFromInterval(0, window.innerWidth)),
-      toTopOffset: getRandomNumberFromInterval(0, window.innerHeight),
-      toLeftOffset: getRandomNumberFromInterval(0, window.innerWidth),
+      fromTopOffset: randomBoolean ? this._dataService.getRandomNumberFromInterval(0, window.innerHeight) : -(this._dataService.getRandomNumberFromInterval(0, window.innerHeight)),
+      fromLeftOffset: randomBoolean ? this._dataService.getRandomNumberFromInterval(0, window.innerWidth) : -(this._dataService.getRandomNumberFromInterval(0, window.innerWidth)),
+      toTopOffset: this._dataService.getRandomNumberFromInterval(0, window.innerHeight),
+      toLeftOffset: this._dataService.getRandomNumberFromInterval(0, window.innerWidth),
     }
   }  
 }

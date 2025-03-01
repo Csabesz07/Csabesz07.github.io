@@ -1,4 +1,4 @@
-import { animation, style, animate, keyframes } from '@angular/animations';
+import { animation, style, animate } from '@angular/animations';
 
 export const meteoriteFall = animation([
   style({    
@@ -11,4 +11,15 @@ export const meteoriteFall = animation([
     top: 'calc({{toTop}}px - {{toTopOffset}}px)',
     left: 'calc({{toLeft}}px + {{toLeftOffset}}px)',
   })),  
+]);
+
+export const rocketSmoke = animation([
+  style({    
+    transform: 'translateX(0) translateY(0) scale(1)',
+    opacity: '1',
+  }),
+  animate('{{timingMs}}ms', style({
+    transform: 'translateX({{operatorX}}{{distance}}px) translateY({{operatorY}}{{offset}}px) scale(0)',
+    opacity: '0',
+  }))
 ]);
