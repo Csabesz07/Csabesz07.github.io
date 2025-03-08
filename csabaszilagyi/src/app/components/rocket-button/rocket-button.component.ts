@@ -2,10 +2,9 @@ import { Component, ElementRef, input, output } from '@angular/core';
 import { SharedModule } from '../../../shared/modules/shared/shared.module';
 import { AnimationBuilder, AnimationPlayer } from '@angular/animations';
 import { rocketLaunch, rocketSmoke } from '../../animations/background-element.animation';
-import { RocketSmokeAnimationParameters } from '../../types/rocket-smoke-params';
+import { RocketSmokeAnimationParameters, RocketLaunchParameters } from '../../types/animation-params';
 import { DataService } from '../../services/data.service';
 import { Direction } from '../../enums/direction.enum';
-import { RocketLaunchParameters } from '../../types/rocket-launch-params';
 
 const particleHeight = 30;
 const particleWidth = 30;

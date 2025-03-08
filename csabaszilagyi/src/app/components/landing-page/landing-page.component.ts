@@ -5,7 +5,7 @@ import { Language } from '../../enums/language.enum';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AnimationBuilder } from '@angular/animations';
 import { meteoriteFall } from '../../animations/background-element.animation';
-import { MeteoriteAnimationParams } from '../../types/meteorite-animation-params';
+import { MeteoriteAnimationParams } from '../../types/animation-params';
 import { DataService } from '../../services/data.service';
 import { TranslateService } from '@ngx-translate/core';
 
