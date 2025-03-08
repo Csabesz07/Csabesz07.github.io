@@ -23,3 +23,12 @@ export const rocketSmoke = animation([
     opacity: '0',
   }))
 ]);
+
+export const rocketLaunch = animation([
+  style({    
+    transform: 'translateY(0)',
+  }),
+  animate('{{timingMs}}ms', style({
+    transform: 'translateY({{operator}}{{distance}}px)',
+  }))
+]);

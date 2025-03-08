@@ -7,6 +7,7 @@ import { AnimationBuilder } from '@angular/animations';
 import { meteoriteFall } from '../../animations/background-element.animation';
 import { MeteoriteAnimationParams } from '../../types/meteorite-animation-params';
 import { DataService } from '../../services/data.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'landing-page',
@@ -38,6 +39,7 @@ export class LandingPageComponent implements OnDestroy {
     private _builder: AnimationBuilder,
     private _element: ElementRef,
     private _dataService: DataService,
+    private _translate: TranslateService,
   ) {}  
 
   ngOnDestroy(): void {
@@ -45,6 +47,7 @@ export class LandingPageComponent implements OnDestroy {
   }
 
   public navigateToGalaxy(lang: Language): void {
+    this._translate.use(Language[lang]);
     const params = this._activatedRoute.snapshot.paramMap;
     this._router.navigate(
       ['/' + (params.get('previous') ?? 'galaxy')], 

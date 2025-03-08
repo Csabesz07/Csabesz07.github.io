@@ -1,3 +1,5 @@
+import { Operator } from "./operator";
+
 export type MeteoriteAnimationParams = {
     fromTop: number;
     fromLeft: number;
@@ -5,7 +7,7 @@ export type MeteoriteAnimationParams = {
     toLeft: number;
     rotation: number;
     timingMs: number;
-    operator: '+' | '-';
+    operator: Operator;
     fromTopOffset: number;
     fromLeftOffset: number;
     toTopOffset: number;
