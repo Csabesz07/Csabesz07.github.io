@@ -1,4 +1,4 @@
-import { Component, ElementRef, input, output } from '@angular/core';
+import { Component, ElementRef, inject, input, output } from '@angular/core';
 import { SharedModule } from '../../../shared/modules/shared/shared.module';
 import { AnimationBuilder, AnimationPlayer } from '@angular/animations';
 import { rocketLaunch, rocketSmoke } from '../../animations/background-element.animation';
@@ -27,11 +27,9 @@ export class RocketButtonComponent {
 
   private _smokeGenerator?: any;
 
-  constructor(
-    private _builder: AnimationBuilder,
-    private _elementRef: ElementRef<HTMLElement>,
-    private _dataService: DataService,
-  ) {}
+  private _builder: AnimationBuilder = inject(AnimationBuilder);
+  private _elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
+  private _dataService: DataService = inject(DataService);
 
   startAnimation(): void {    
     this._smokeGenerator = setInterval(() => {

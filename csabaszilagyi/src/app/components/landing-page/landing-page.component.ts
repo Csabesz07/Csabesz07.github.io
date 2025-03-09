@@ -1,13 +1,14 @@
-import { Component, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ElementRef, inject, OnDestroy } from '@angular/core';
 import { SharedModule } from '../../../shared/modules/shared/shared.module';
 import { RocketButtonComponent } from "../rocket-button/rocket-button.component";
 import { Language } from '../../enums/language.enum';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AnimationBuilder } from '@angular/animations';
+import { AnimationBuilder, transition, trigger, useAnimation } from '@angular/animations';
 import { meteoriteFall } from '../../animations/background-element.animation';
-import { MeteoriteAnimationParams } from '../../types/animation-params';
+import { FadeAnimationParameters, MeteoriteAnimationParams } from '../../types/animation-params';
 import { DataService } from '../../services/data.service';
 import { TranslateService } from '@ngx-translate/core';
+import { fadeIn } from '../../animations/appearance.animation';
 
 @Component({
   selector: 'landing-page',
@@ -15,7 +16,33 @@ import { TranslateService } from '@ngx-translate/core';
   imports: [
     SharedModule,
     RocketButtonComponent,
-  ],  
+  ],
+  animations: [
+    trigger('title', [
+      transition('* => *', [
+        useAnimation(fadeIn, {params: {
+          timingMs: 1500,
+          delayMs: 500,
+        } as FadeAnimationParameters})
+      ]),
+    ]),
+    trigger('hunButton', [
+      transition('* => *', [
+        useAnimation(fadeIn, {params: {
+          timingMs: 1500,
+          delayMs: 1000,
+        } as FadeAnimationParameters})
+      ]),
+    ]),
+    trigger('engButton', [
+      transition('* => *', [
+        useAnimation(fadeIn, {params: {
+          timingMs: 1500,
+          delayMs: 1500,
+        } as FadeAnimationParameters})
+      ]),
+    ]),
+  ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'
 })
@@ -33,14 +60,12 @@ export class LandingPageComponent implements OnDestroy {
       }
     }, 500);
 
-  constructor(
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute,
-    private _builder: AnimationBuilder,
-    private _element: ElementRef,
-    private _dataService: DataService,
-    private _translate: TranslateService,
-  ) {}  
+    private _router: Router = inject(Router);
+    private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+    private _builder: AnimationBuilder = inject(AnimationBuilder);
+    private _element: ElementRef = inject(ElementRef);
+    private _dataService: DataService = inject(DataService);
+    private _translate: TranslateService = inject(TranslateService);
 
   ngOnDestroy(): void {
     clearInterval(this._meteoriteCreator);

@@ -1,11 +1,11 @@
-<h1>Choose a language</h1>
+<h1 [@title]>Choose a language</h1>
 
-<hr>
+<hr [@title]>
 
-<h1>Válassz nyelvet</h1>
+<h1 [@title]>Válassz nyelvet</h1>
 
 <div class="buttons">
-    <rocket-button [title]="'Magyar'" (onClick)="navigateToGalaxy(LanguageEnum.hu)"></rocket-button>
+    <rocket-button [@hunButton] [title]="'Magyar'" (onClick)="navigateToGalaxy(LanguageEnum.hu)"></rocket-button>
     
-    <rocket-button [title]="'English'" (onClick)="navigateToGalaxy(LanguageEnum.en)"></rocket-button>
+    <rocket-button [@engButton] [title]="'English'" (onClick)="navigateToGalaxy(LanguageEnum.en)"></rocket-button>
 </div>
