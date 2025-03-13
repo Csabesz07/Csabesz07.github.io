@@ -107,7 +107,7 @@ export class RocketButtonComponent {
     rocket.style.width = rocketWidth + 'px';
     rocket.style.rotate = direction == Direction.right ? '-90deg' : '90deg';
     rocket.src = 'assets/images/rocket.png';
-    rocket.style.top = nativeElement.offsetTop - (rocketWidth / 2) + 8 + 'px';
+    rocket.style.top = (nativeElement.offsetTop - (rocketWidth / 2) - 8) + 'px';
     rocket.style.left = (nativeElement.offsetLeft + (nativeElement.offsetWidth / 2) - (rocketWidth / 2)) + 'px';
 
     return rocket;
