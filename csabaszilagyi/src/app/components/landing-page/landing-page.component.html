@@ -5,7 +5,19 @@
 <h1 [@title]>Válassz nyelvet</h1>
 
 <div class="buttons">
-    <rocket-button [@hunButton] [title]="'Magyar'" (onClick)="navigateToGalaxy(LanguageEnum.hu)"></rocket-button>
+    <rocket-button 
+        [@hunButton] 
+        [title]="'Magyar'" 
+        [isDisabled]="!isButtonActive"
+        (onClick)="isButtonActive = false" 
+        (onAnimationEnd)="navigateToGalaxy(LanguageEnum.hu)">
+    </rocket-button>
     
-    <rocket-button [@engButton] [title]="'English'" (onClick)="navigateToGalaxy(LanguageEnum.en)"></rocket-button>
+    <rocket-button 
+        [@engButton] 
+        [title]="'English'" 
+        [isDisabled]="!isButtonActive"
+        (onClick)="isButtonActive = false" 
+        (onAnimationEnd)="navigateToGalaxy(LanguageEnum.en)">
+    </rocket-button>
 </div>

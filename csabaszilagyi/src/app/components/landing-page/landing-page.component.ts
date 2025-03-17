@@ -49,6 +49,8 @@ import { fadeIn } from '../../animations/appearance.animation';
 export class LandingPageComponent implements OnDestroy {
   public LanguageEnum = Language;
 
+  public isButtonActive: boolean = true;
+
   private _meteorites: Set<HTMLImageElement> = new Set();
 
   private _meteoriteCreator = setInterval(() => {
@@ -58,14 +60,14 @@ export class LandingPageComponent implements OnDestroy {
         this._meteorites.add(meteorite);
         this._animateMeteorite(meteorite);
       }
-    }, 500);
+  }, 500);
 
-    private _router: Router = inject(Router);
-    private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-    private _builder: AnimationBuilder = inject(AnimationBuilder);
-    private _element: ElementRef = inject(ElementRef);
-    private _dataService: DataService = inject(DataService);
-    private _translate: TranslateService = inject(TranslateService);
+  private _router: Router = inject(Router);
+  private _activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  private _builder: AnimationBuilder = inject(AnimationBuilder);
+  private _element: ElementRef = inject(ElementRef);
+  private _dataService: DataService = inject(DataService);
+  private _translate: TranslateService = inject(TranslateService);
 
   ngOnDestroy(): void {
     clearInterval(this._meteoriteCreator);
@@ -75,7 +77,7 @@ export class LandingPageComponent implements OnDestroy {
     this._translate.use(Language[lang]);
     const params = this._activatedRoute.snapshot.paramMap;
     this._router.navigate(
-      ['/' + (params.get('previous') ?? 'galaxy')], 
+      ['/' + (params.get('redirectUrl') ?? 'galaxy')], 
       { 
         queryParams: {lang: lang},
         relativeTo: this._activatedRoute,

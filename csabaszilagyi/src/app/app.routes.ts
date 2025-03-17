@@ -9,7 +9,7 @@ export const routes: Routes = [
     {
         path: 'galaxy',
         loadComponent: () => import('../app/components/galaxy/galaxy.component').then(c => c.GalaxyComponent),
-        canActivate: [ languageControlGuard ]
+        canActivate: [ languageControlGuard ],
     },
     { 
         path: '', 

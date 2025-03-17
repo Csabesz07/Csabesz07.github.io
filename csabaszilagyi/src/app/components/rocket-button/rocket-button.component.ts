@@ -23,7 +23,11 @@ export class RocketButtonComponent {
   
   title = input.required<string>();
 
-  onClick = output();  
+  isDisabled = input<boolean>(false);
+
+  onClick = output();
+  
+  onAnimationEnd = output();
 
   private _smokeGenerator?: any;
 
@@ -31,14 +35,16 @@ export class RocketButtonComponent {
   private _elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
   private _dataService: DataService = inject(DataService);
 
-  startAnimation(): void {    
-    this._smokeGenerator = setInterval(() => {
-      this._placeParticleWithAnimation(Direction.right);
-      this._placeParticleWithAnimation(Direction.left);
-    }, 100);
+  startSmokeAnimation(): void {    
+    if(!this.isDisabled()) {
+      this._smokeGenerator = setInterval(() => {
+        this._placeParticleWithAnimation(Direction.right);
+        this._placeParticleWithAnimation(Direction.left);
+      }, 100);
+    }
   }
 
-  stopAnimation(): void {
+  stopSmokeAnimation(): void {
     clearInterval(this._smokeGenerator);
   }
 
@@ -132,11 +138,13 @@ export class RocketButtonComponent {
   }
   
   public click(): void {
+    this.onClick.emit();    
+    this.stopSmokeAnimation();
     this._createRocketWithAnimation(Direction.left);
     this._createRocketWithAnimation(Direction.right, (player, element) => {
       player.destroy();
       this._elementRef.nativeElement.removeChild(element);
-      this.onClick.emit();
+      this.onAnimationEnd.emit();
     });    
   }
 }

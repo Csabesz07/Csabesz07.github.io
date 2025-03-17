@@ -9,6 +9,6 @@ export const languageControlGuard: CanActivateFn = (route, state) => {
   {
     return true;
   } else {
-    return router.createUrlTree(['/language'], {queryParams: {previous: route.url}});
+    return router.createUrlTree(['/language'], {queryParams: {redirectUrl: route.url}});
   }
 };
